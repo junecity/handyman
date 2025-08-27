@@ -3,664 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Junecity Handyman - Professional Handyman Services</title>
+    <title>My YouTube Videos</title>
+    <!-- Use the 'Inter' font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Load Tailwind CSS from CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Set a default font family for the whole page */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #a855f7;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #a855f7;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: #a855f7;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, #a855f7, #c084fc);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.3);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(192, 132, 252, 0.8) 0%, rgba(168, 85, 247, 0.8) 50%, rgba(147, 51, 234, 0.8) 100%);
-            z-index: -1;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        .hero-content {
-            max-width: 800px;
-            z-index: 2;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: slideUp 1s ease 0.5s forwards;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: slideUp 1s ease 0.7s forwards;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            opacity: 0;
-            animation: slideUp 1s ease 0.9s forwards;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Services Section */
-        .services {
-            padding: 5rem 2rem;
-            background: #f8fafc;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #1e293b;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #a855f7, #c084fc);
-            transition: left 0.3s ease;
-        }
-
-        .service-card:hover::before {
-            left: 0;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #a855f7, #c084fc);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        .service-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #1e293b;
-        }
-
-        /* About Section */
-        .about {
-            padding: 5rem 2rem;
-            background: white;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: #1e293b;
-        }
-
-        .about-text p {
-            margin-bottom: 1rem;
-            color: #64748b;
-            font-size: 1.1rem;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #a855f7;
-        }
-
-        .stat-label {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, #1e293b, #334155);
-            color: white;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .contact-form {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-size: 1rem;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .contact-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            gap: 1rem;
-        }
-
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(168, 85, 247, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Footer */
-        footer {
-            background: #0f172a;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
+            font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
-<body>
-    <header>
-        <nav>
-            <a href="#" class="logo">Junecity Handyman</a>
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a href="#contact" class="cta-button">Get Quote</a>
-        </nav>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+
+    <!-- Header Section -->
+    <header class="bg-gray-800 py-8 shadow-lg">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-center text-indigo-400 leading-tight">
+                My Video Collection
+            </h1>
+            <p class="text-xl sm:text-2xl text-center text-gray-400 mt-2">
+                A collection of my latest and greatest videos.
+            </p>
+        </div>
     </header>
 
-    <section class="hero">
-        <video class="hero-video" autoplay muted loop playsinline>
-            <source src="https://cdn.pixabay.com/vimeo/265824932/handyman-14226.mp4?width=1280&hash=efcdac2cfd4d73ae1b6d27a5a08978b5096df9d3" type="video/mp4">
-            <!-- Fallback for browsers that don't support video -->
-            Your browser does not support the video tag.
-        </video>
-        <div class="hero-content">
-            <h1>Professional Handyman Services</h1>
-            <p>Quality repairs, installations, and maintenance for your home and business. Licensed, insured, and trusted by hundreds of satisfied customers.</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="cta-button">Get Free Estimate</a>
-                <a href="#services" class="cta-button" style="background: transparent; border: 2px solid white;">View Services</a>
+    <!-- Main Content - Video Gallery -->
+    <main class="flex-grow py-12 px-4">
+        <div class="container mx-auto">
+            <!--
+                Video Grid Container:
+                - Use a responsive grid layout.
+                - gap-8 adds space between videos.
+                - grid-cols-1 for single column on small screens.
+                - md:grid-cols-2 for two columns on medium screens.
+                - lg:grid-cols-3 for three columns on large screens.
+            -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Video Item 1 -->
+                <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <!--
+                        To embed a YouTube video, use an iframe with the 'embed' URL.
+                        Example: A video URL like 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+                        becomes 'https://www.youtube.com/embed/dQw4w9WgXcQ'.
+                        
+                        Replace the src with your video's embed URL.
+                        You can get this from YouTube by clicking "Share" -> "Embed".
+                    -->
+                    <div class="relative w-full" style="padding-top: 56.25%;">
+                        <iframe 
+                            class="absolute top-0 left-0 w-full h-full rounded-t-2xl" 
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-6">
+                        <h2 class="text-xl font-bold text-indigo-300">Video Title 1</h2>
+                        <p class="text-gray-400 text-sm mt-2">
+                            A brief description of your video goes here. Explain what the video is about.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Video Item 2 -->
+                <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <div class="relative w-full" style="padding-top: 56.25%;">
+                        <iframe 
+                            class="absolute top-0 left-0 w-full h-full rounded-t-2xl" 
+                            src="https://www.youtube.com/embed/bM1Qc_lW1Lw" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-6">
+                        <h2 class="text-xl font-bold text-indigo-300">Video Title 2</h2>
+                        <p class="text-gray-400 text-sm mt-2">
+                            This is a great place to describe the content of this video.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Video Item 3 -->
+                <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <div class="relative w-full" style="padding-top: 56.25%;">
+                        <iframe 
+                            class="absolute top-0 left-0 w-full h-full rounded-t-2xl" 
+                            src="https://www.youtube.com/embed/Q_Q1h0v3TfA" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-6">
+                        <h2 class="text-xl font-bold text-indigo-300">Video Title 3</h2>
+                        <p class="text-gray-400 text-sm mt-2">
+                            Add a short, compelling description for this video.
+                        </p>
+                    </div>
+                </div>
+
+                <!--
+                    Add more video items by copying and pasting the "Video Item" block above.
+                -->
+
             </div>
         </div>
-        <div class="scroll-indicator">
-            <div style="font-size: 1.5rem;">↓</div>
-            <div style="font-size: 0.8rem; margin-top: 0.5rem;">Scroll Down</div>
-        </div>
-    </section>
+    </main>
 
-    <section class="services" id="services">
-        <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🔧</div>
-                    <h3>Plumbing Repairs</h3>
-                    <p>From leaky faucets to pipe installations, we handle all your plumbing needs with precision and reliability.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔲</div>
-                    <h3>Tile Repair</h3>
-                    <p>Expert tile installation, repair, and restoration for bathrooms, kitchens, and flooring projects.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🏠</div>
-                    <h3>Home Maintenance</h3>
-                    <p>Regular maintenance services to keep your property in perfect condition year-round.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎨</div>
-                    <h3>Painting & Drywall</h3>
-                    <p>Professional painting services and drywall repairs to refresh and beautify your space.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔨</div>
-                    <h3>Carpentry</h3>
-                    <p>Custom woodwork, furniture assembly, and carpentry repairs by skilled craftsmen.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🏗️</div>
-                    <h3>General Repairs</h3>
-                    <p>Quick fixes and general repairs to keep your home and office running smoothly.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Why Choose Junecity Handyman?</h2>
-                    <p>With over 15 years of experience in the industry, we've built our reputation on quality workmanship, reliability, and exceptional customer service.</p>
-                    <p>Our team of licensed professionals is equipped with the latest tools and techniques to handle any job, big or small. We're committed to getting it right the first time, every time.</p>
-                    <p>From emergency repairs to planned renovations, we're your trusted partner for all handyman services.</p>
-                </div>
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Happy Customers</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Emergency Service</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2 class="section-title" style="color: white;">Get Your Free Quote</h2>
-            <div class="contact-content">
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your full name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Service Needed</label>
-                            <input type="text" id="service" name="service" placeholder="e.g., Plumbing repair, Electrical work" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Project Details</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Describe your project or repair needs..." required></textarea>
-                        </div>
-                        <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
-                    </form>
-                </div>
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div>
-                            <strong>Phone</strong><br>
-                            (555) 123-HANDYMAN
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div>
-                            <strong>Email</strong><br>
-                            info@junecityhandyman.com
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <strong>Service Area</strong><br>
-                            Greater Metro Area<br>
-                            Available 24/7
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">🏆</div>
-                        <div>
-                            <strong>Licensed & Insured</strong><br>
-                            Bonded professionals<br>
-                            Satisfaction guaranteed
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Junecity Handyman. All rights reserved. Licensed, Bonded & Insured.</p>
-        </div>
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 py-6 mt-12 text-center text-gray-500">
+        <p>&copy; 2025 My YouTube Channel. All rights reserved.</p>
     </footer>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Header background change on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = 'none';
-            }
-        });
-
-        // Form submission handler
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Simulate form submission
-            const button = this.querySelector('button');
-            const originalText = button.textContent;
-            button.textContent = 'Sending...';
-            button.disabled = true;
-            
-            setTimeout(() => {
-                alert('Thank you for your message! We\'ll get back to you within 24 hours.');
-                this.reset();
-                button.textContent = originalText;
-                button.disabled = false;
-            }, 1500);
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '-50px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe service cards for stagger animation
-        document.querySelectorAll('.service-card').forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(50px)';
-            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
-            observer.observe(card);
-        });
-    </script>
 </body>
 </html>
