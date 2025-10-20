@@ -90,6 +90,27 @@
       .section{padding:36px 0}
       .card{padding:16px}
       body{padding-bottom:74px}
+      /* Mobile nav sheet */
+      .hamburger{display:inline-flex}
+      nav{position:fixed;left:0;right:0;top:64px; /* approx header height */
+           transform:translateY(-8px);opacity:0;pointer-events:none;
+           transition:transform .18s ease, opacity .18s ease;
+           background:rgba(250,246,238,.98);backdrop-filter:blur(8px);
+           border-top:1px solid var(--line);padding:12px 16px;gap:8px;z-index:40;display:flex;flex-wrap:wrap}
+      nav a{flex:1 1 calc(50% - 8px);text-align:center;padding:12px 10px;margin:0;border:1px solid var(--line);border-radius:12px;background:#fff}
+      nav.open{transform:translateY(0);opacity:1;pointer-events:auto}
+      /* sticky action bar */
+      .mobile-cta{display:flex;position:fixed;left:0;right:0;bottom:0;gap:8px;padding:10px 16px;background:rgba(250,246,238,.96);border-top:1px solid var(--line);backdrop-filter:blur(8px);z-index:38}
+      .mobile-cta a{flex:1}
+    }
+      .h-inner{padding:8px 0}
+      .logo{width:40px;height:40px}
+      .hero .wrap{text-align:center;padding:36px 16px}
+      .cta{justify-content:center}
+      .btn{width:100%;text-align:center;padding:16px 18px}
+      .section{padding:36px 0}
+      .card{padding:16px}
+      body{padding-bottom:74px}
       /* Mobile nav */
       .hamburger{display:inline-flex}
       nav{position:fixed;inset:auto 0 0 0;transform:translateY(100%);transition:transform .18s ease;background:rgba(250,246,238,.98);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:10px 16px;gap:6px}
@@ -111,7 +132,7 @@
   <header>
     <div class="wrap h-inner">
       <a class="brand" href="#top"><span class="logo"><img src="https://junecity.studio/assets/img/junecity-logo.jpeg" alt="JuneCity LLC logo" /></span><span class="wordmark">JUNECITY LLC<small>Big or Small — Done in a Day!</small></span></a>
-      <button class="hamburger" id="navToggle" aria-controls="siteNav" aria-expanded="false" aria-label="Open menu">
+      <button class="hamburger" id="navToggle" type="button" aria-controls="siteNav" aria-expanded="false" aria-label="Open menu">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z"/></svg>
       </button>
       <nav id="siteNav" aria-label="Site">
@@ -123,6 +144,8 @@
       </nav>
     </div>
   </header>
+  <!-- Mobile nav backdrop -->
+  <div id="scrim" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(2px);z-index:39"></div>
 
   <section class="hero" id="top">
     <div class="wrap">
@@ -215,13 +238,18 @@
   <div class="toast" id="toast" role="status" aria-live="polite">Copied!</div>
 
   <script>
-    // Mobile menu toggle
+    // Mobile menu toggle with backdrop + scroll lock
     const navToggle = document.getElementById('navToggle');
     const siteNav = document.getElementById('siteNav');
-    navToggle?.addEventListener('click', () => {
-      const isOpen = siteNav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
+    const scrim = document.getElementById('scrim');
+    function openNav(){ siteNav.classList.add('open'); navToggle.setAttribute('aria-expanded','true'); scrim.style.display='block'; document.body.style.overflow='hidden'; }
+    function closeNav(){ siteNav.classList.remove('open'); navToggle.setAttribute('aria-expanded','false'); scrim.style.display='none'; document.body.style.overflow=''; }
+    navToggle?.addEventListener('click', ()=> siteNav.classList.contains('open') ? closeNav() : openNav());
+    scrim?.addEventListener('click', closeNav);
+    // Close on link click (good for single-page anchors)
+    siteNav?.querySelectorAll('a').forEach(a=> a.addEventListener('click', closeNav));
+    // Close on Esc
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeNav(); });
 
     // Click-to-copy helpers
     const toast = document.getElementById('toast');
@@ -240,7 +268,14 @@
       const message = document.getElementById('message').value.trim();
       const subject = encodeURIComponent(`New Project from ${name}`);
       const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nPreferred Day: ${day}\n\nProject Details:\n${message}\n`
+        `Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Preferred Day: ${day}
+
+Project Details:
+${message}
+`
       );
       window.location.href = `mailto:andre@junecity.com?subject=${subject}&body=${body}`;
     });
