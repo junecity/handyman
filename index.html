@@ -1,35 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
+  <!-- Essentials -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>JuneCity LLC | One‑Day Handyman Services</title>
+  <title>JuneCity LLC • One‑Day Handyman Services</title>
   <meta name="description" content="Fast, reliable, affordable one‑day handyman services. Call 860‑849‑5793 or email andre@junecity.com." />
-  <link rel="icon" type="image/jpeg" href="image/logo.jpeg" />
-  <meta property="og:image" content="image/logo.jpeg" />
+
+  <!-- Branding & social -->
+  <link rel="icon" href="/assets/img/junecity-logo.jpg" type="image/jpeg" />
+  <meta property="og:site_name" content="JuneCity LLC" />
+  <meta property="og:title" content="JuneCity • Big or Small — Done in a Day!" />
+  <meta property="og:description" content="One‑day home improvement projects. Simple per‑job pricing. Your home, fixed fast." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://junecity.github.io" />
+  <meta property="og:image" content="https://junecity.github.io/assets/img/junecity-logo.jpg" />
   <meta name="theme-color" content="#0f2740" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
   <style>
-    :root{--ink:#0f2740;--accent:#f1852b;--paper:#faf6ee;--ok:#2fa84f;--line:rgba(15,39,64,.1)}
+    :root{--ink:#0f2740;--accent:#f1852b;--paper:#faf6ee;--ok:#2fa84f;--line:rgba(15,39,64,.12)}
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper)}
-    a{color:var(--ink)}
-    .wrap{max-width:1100px;margin:auto;padding:0 20px}
+    html,body{margin:0;padding:0}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper)}
+    a{color:inherit}
+    .wrap{max-width:1120px;margin:auto;padding:0 20px}
     .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;padding:14px 22px;border-radius:14px;box-shadow:0 8px 20px rgba(241,133,43,.25);transition:transform .08s ease}
     .btn:hover{transform:translateY(-1px)}
+
     /* Header */
-    header{position:sticky;top:0;z-index:40;background:rgba(250,246,238,.9);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line)}
-    header .inner{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    header{position:sticky;top:0;z-index:40;background:rgba(250,246,238,.92);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line)}
+    .h-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
     .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:44px;height:44px;border-radius:50%;overflow:hidden;position:relative;box-shadow:0 4px 12px rgba(15,39,64,.15);border:2px solid #fff}
+    .logo{width:46px;height:46px;border-radius:50%;overflow:hidden;position:relative;box-shadow:0 4px 12px rgba(15,39,64,.15);border:2px solid #fff}
     .logo img{width:100%;height:100%;object-fit:cover}
-    .logo svg{position:absolute;right:-4px;bottom:-4px;width:22px;height:22px;background:var(--accent);border-radius:999px;padding:3px;fill:#fff;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+    .logo-badge{position:absolute;right:-4px;bottom:-4px;width:22px;height:22px;background:var(--accent);border-radius:999px;padding:3px;fill:#fff;box-shadow:0 2px 8px rgba(0,0,0,.2)}
     .wordmark{font-weight:900;letter-spacing:.3px;line-height:1}
     .wordmark small{display:block;font-size:12px;opacity:.75}
     nav a{font-weight:700;text-decoration:none;margin:0 10px;opacity:.85}
     nav a:hover{opacity:1}
+
     /* Hero */
     .hero{position:relative}
     .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:56px 20px}
@@ -38,6 +53,7 @@
     .subtitle{font-size:18px;opacity:.9;margin-bottom:22px}
     .hero-art{aspect-ratio:4/3;border-radius:24px;background:linear-gradient(135deg,#193554,#0f2740);display:grid;place-items:center;box-shadow:0 20px 60px rgba(15,39,64,.35)}
     .hero-art svg{width:70%;height:auto;fill:#fff;opacity:.95}
+
     /* Sections */
     .section{padding:48px 0}
     .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
@@ -48,12 +64,18 @@
     .check{color:var(--ok);font-weight:900}
     .muted{opacity:.85}
     .pricing-note{font-weight:800}
+
+    /* Videos */
     .yt{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
     .yt iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;box-shadow:0 10px 30px rgba(15,39,64,.15)}
-    .footer{padding:30px 0 50px;border-top:1px solid var(--line);margin-top:40px}
+
+    /* Contact */
     .contact{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
     .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .footer{padding:30px 0 50px;border-top:1px solid var(--line);margin-top:40px}
     .badge{background:#0f2740;color:#fff;border-radius:10px;padding:10px 12px;font-weight:800}
+
+    /* Responsive */
     @media (max-width:900px){
       .hero .wrap{grid-template-columns:1fr}
       .cards{grid-template-columns:1fr}
@@ -61,22 +83,34 @@
       .contact{grid-template-columns:1fr}
     }
   </style>
+
+  <!-- Structured data for better SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "JuneCity LLC",
+    "image": "https://junecity.github.io/assets/img/junecity-logo.jpg",
+    "url": "https://junecity.github.io",
+    "telephone": "+1-860-849-5793",
+    "areaServed": "US",
+    "slogan": "Big or Small — Done in a Day!",
+    "description": "Fast, reliable, affordable one‑day handyman services.",
+    "priceRange": "Per job"
+  }
+  </script>
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <div class="wrap inner">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">
-          <img src="image/logo.jpeg" alt="JuneCity owner portrait logo" />
-          <!-- small hammer badge -->
-          <svg viewBox="0 0 24 24" role="img" aria-label="hammer badge"><path d="M2 20l7.5-7.5 2 2L4 22H2v-2zM14.6 3.2c.8-.8 2.1-.8 2.9 0l2.3 2.3a2 2 0 010 2.9l-.3.3-2.6-2.6-.8.8 2.6 2.6-5.7 5.7-4.6-4.6 5.7-5.7.5-.5z"/></svg>
-        </div>
-        <div class="wordmark">
-          JUNECITY LLC
-          <small>Big or Small — Done in a Day!</small>
-        </div>
-      </div>
-      <nav>
+    <div class="wrap h-inner" role="navigation" aria-label="Primary">
+      <a class="brand" href="#top" aria-label="JuneCity home">
+        <span class="logo" aria-hidden="true">
+          <img src="/assets/img/junecity-logo.jpg" alt="JuneCity LLC logo" loading="eager" fetchpriority="high" />
+        </span>
+        <span class="wordmark">JUNECITY LLC<small>Big or Small — Done in a Day!</small></span>
+      </a>
+      <nav aria-label="Site">
         <a href="#services">Services</a>
         <a href="#pricing">Pricing</a>
         <a href="#why">Why Us</a>
@@ -86,19 +120,20 @@
     </div>
   </header>
 
-  <section class="hero">
+  <!-- Hero -->
+  <section class="hero" id="top">
     <div class="wrap">
       <div>
         <span class="tag">FAST. RELIABLE. AFFORDABLE.</span>
         <h1>One‑Day Handyman Services</h1>
         <p class="subtitle">We specialize in one‑day home improvement projects — no waiting weeks for a contractor.</p>
         <div class="cta">
-          <a class="btn" href="tel:+18608495793">Call / Text: 860‑849‑5793</a>
-          <a class="btn" style="background:#0f2740" href="mailto:andre@junecity.com">Email Us</a>
+          <a class="btn" href="tel:+18608495793" aria-label="Call JuneCity">Call / Text: 860‑849‑5793</a>
+          <a class="btn" style="background:#0f2740" href="mailto:andre@junecity.com" aria-label="Email JuneCity">Email Us</a>
         </div>
       </div>
       <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="4"/>
+        <svg viewBox="0 0 120 120" role="img" aria-label="Decorative tools graphic"><circle cx="60" cy="60" r="56" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="4"/>
           <g>
             <path d="M24 72l22-22 8 8-22 22H24z"/>
             <path d="M78 20a8 8 0 015.7 2.3l7.2 7.2a8 8 0 010 11.3l-1 1-8.4-8.4-2.6 2.6 8.4 8.4-18.4 18.4-15-15L75.1 23a8 8 0 012.9-2z"/>
@@ -108,43 +143,45 @@
     </div>
   </section>
 
+  <!-- Services -->
   <section id="services" class="section wrap">
     <h2>Services We Offer</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Installations & Mounting</h3>
+    <div class="cards" role="list">
+      <article class="card" role="listitem">
+        <h3>Installations &amp; Mounting</h3>
         <ul class="list">
-          <li><span class="check">✔</span><span>TV & shelf installation</span></li>
-          <li><span class="check">✔</span><span>Curtain rods, blinds & hardware</span></li>
-          <li><span class="check">✔</span><span>Light & faucet replacement</span></li>
+          <li><span class="check">✔</span><span>TV &amp; shelf installation</span></li>
+          <li><span class="check">✔</span><span>Curtain rods, blinds &amp; hardware</span></li>
+          <li><span class="check">✔</span><span>Light &amp; faucet replacement</span></li>
         </ul>
-      </div>
-      <div class="card">
+      </article>
+      <article class="card" role="listitem">
         <h3>Repairs</h3>
         <ul class="list">
-          <li><span class="check">✔</span><span>Door, lock & trim repair</span></li>
-          <li><span class="check">✔</span><span>Drywall patching & painting</span></li>
-          <li><span class="check">✔</span><span>Small flooring & carpentry jobs</span></li>
+          <li><span class="check">✔</span><span>Door, lock &amp; trim repair</span></li>
+          <li><span class="check">✔</span><span>Drywall patching &amp; painting</span></li>
+          <li><span class="check">✔</span><span>Small flooring &amp; carpentry jobs</span></li>
         </ul>
-      </div>
-      <div class="card">
+      </article>
+      <article class="card" role="listitem">
         <h3>Exterior</h3>
         <ul class="list">
-          <li><span class="check">✔</span><span>Fence & deck repair</span></li>
-          <li><span class="check">✔</span><span>Power washing & gutter cleaning</span></li>
+          <li><span class="check">✔</span><span>Fence &amp; deck repair</span></li>
+          <li><span class="check">✔</span><span>Power washing &amp; gutter cleaning</span></li>
         </ul>
-      </div>
-      <div class="card">
-        <h3>Custom "One‑Day" Projects</h3>
+      </article>
+      <article class="card" role="listitem">
+        <h3>Custom “One‑Day” Projects</h3>
         <ul class="list">
           <li><span class="check">✔</span><span>Bundle small fixes into a single visit</span></li>
           <li><span class="check">✔</span><span>Materials can be provided or pre‑purchased</span></li>
-          <li><span class="check">✔</span><span>Clear communication & tidy cleanup</span></li>
+          <li><span class="check">✔</span><span>Clear communication &amp; tidy cleanup</span></li>
         </ul>
-      </div>
+      </article>
     </div>
   </section>
 
+  <!-- Pricing -->
   <section id="pricing" class="section wrap">
     <h2>Simple Pricing</h2>
     <p class="muted pricing-note">No hidden fees — just honest, one‑day results!</p>
@@ -155,25 +192,28 @@
     </div>
   </section>
 
+  <!-- Why us -->
   <section id="why" class="section wrap">
     <h2>Why Choose Us?</h2>
     <ul class="list" style="max-width:800px">
-      <li><span class="check">✔</span><span>Professional tools & clean work</span></li>
+      <li><span class="check">✔</span><span>Professional tools &amp; clean work</span></li>
       <li><span class="check">✔</span><span>Respect for your home and time</span></li>
       <li><span class="check">✔</span><span>One day and done guarantee</span></li>
     </ul>
   </section>
 
+  <!-- Videos -->
   <section id="videos" class="section wrap">
     <h2>Project Videos</h2>
-    <p class="muted">Replace with your own YouTube links by changing the video IDs after <code>/embed/</code>.</p>
+    <p class="muted">Replace the IDs after <code>/embed/</code> with your own YouTube videos.</p>
     <div class="yt">
-      <iframe title="JuneCity Video 1" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      <iframe title="JuneCity Video 2" src="https://www.youtube.com/embed/oHg5SJYRHA0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      <iframe title="JuneCity Video 3" src="https://www.youtube.com/embed/9bZkp7q19f0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe title="JuneCity Video 1" src="https://www.youtube.com/embed/dQw4w9WgXcQ" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe title="JuneCity Video 2" src="https://www.youtube.com/embed/oHg5SJYRHA0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe title="JuneCity Video 3" src="https://www.youtube.com/embed/9bZkp7q19f0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   </section>
 
+  <!-- Contact -->
   <section id="contact" class="section wrap">
     <div class="contact">
       <div>
@@ -186,7 +226,7 @@
           <a class="btn" style="background:#0f2740" href="mailto:andre@junecity.com?subject=New%20Project%20-%20JuneCity%20LLC">Email Us</a>
         </div>
       </div>
-      <div class="card">
+      <div class="card" aria-label="Quick quote tips">
         <h3>Quick Quote Tips</h3>
         <ul class="list">
           <li><span class="check">✔</span><span>Send a few photos or a short video of the space</span></li>
@@ -197,13 +237,14 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
       <div class="brand" style="gap:10px">
-        <div class="logo" aria-hidden="true">
-          <img src="/mnt/data/0aa9a7977a3072e8b292267d73b95bb9~tplv-tiktokx-cropcenter_1080_1080.jpeg" alt="JuneCity logo small" />
-          <svg viewBox="0 0 24 24" role="img" aria-label="hammer badge"><path d="M2 20l7.5-7.5 2 2L4 22H2v-2zM14.6 3.2c.8-.8 2.1-.8 2.9 0l2.3 2.3a2 2 0 010 2.9l-.3.3-2.6-2.6-.8.8 2.6 2.6-5.7 5.7-4.6-4.6 5.7-5.7.5-.5z"/></svg>
-        </div>
+        <span class="logo" aria-hidden="true">
+          <img src="/assets/img/junecity-logo.jpg" alt="JuneCity logo small" loading="lazy" />
+          <svg class="logo-badge" viewBox="0 0 24 24" role="img" aria-label="hammer badge"><path d="M2 20l7.5-7.5 2 2L4 22H2v-2zM14.6 3.2c.8-.8 2.1-.8 2.9 0l2.3 2.3a2 2 0 010 2.9l-.3.3-2.6-2.6-.8.8 2.6 2.6-5.7 5.7-4.6-4.6 5.7-5.7.5-.5z"/></svg>
+        </span>
         <strong>JuneCity LLC</strong>
       </div>
       <div class="badge">Your Home. Fixed Fast.</div>
